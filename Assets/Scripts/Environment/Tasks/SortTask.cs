@@ -52,10 +52,10 @@ namespace Environment.Tasks {
             for(j = start; j < pivotIndex; j++) {
 
 
-                if(employees[j].lastEntranceInEngineRoom >= pivot.lastEntranceInEngineRoom) {
+                if(employees[j].lastEntranceInEngineRoom <= pivot.lastEntranceInEngineRoom) {
                     
                 }
-                else if(employees[j].lastEntranceInEngineRoom < pivot.lastEntranceInEngineRoom) {
+                else if(employees[j].lastEntranceInEngineRoom > pivot.lastEntranceInEngineRoom) {
                     i++;
                     Swap(employees, i, j);
                    
