@@ -5692,7 +5692,7 @@ PrefabInstance:
     - target: {fileID: 9136795727592245692, guid: 7d560e7070230eb46aeb1576bedf22f3, type: 3}
       propertyPath: testTask3
       value: 
-      objectReference: {fileID: 11400000, guid: ccb7d430b55da4543aa79606aa95df65, type: 2}
+      objectReference: {fileID: 11400000, guid: 5c35100e9f4b0674381fd4b53a4a71aa, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

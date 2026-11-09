@@ -5,8 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - testTask1: {fileID: 11400000, guid: ab600db09ba06bc4d80f67155c14b860, type: 2}
-  - testTask2: {fileID: 11400000, guid: 61a3b23a725f93f4dbe8158450ab9a12, type: 2}
-  - testTask3: {fileID: 11400000, guid: ccb7d430b55da4543aa79606aa95df65, type: 2}
+  - testTask2: {fileID: 11400000, guid: ccb7d430b55da4543aa79606aa95df65, type: 2}
+  - testTask3: {fileID: 11400000, guid: 5c35100e9f4b0674381fd4b53a4a71aa, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

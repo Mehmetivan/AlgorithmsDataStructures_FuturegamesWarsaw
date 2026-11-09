@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 namespace Environment.Tasks {
     [CreateAssetMenu(menuName = "Tasks/Sort Employees")]
-    public class SortTask : Task {
+    public class SortTask : Task<Employee[]> {
         public override object ExecuteTask(object input) {
             if(input is not Employee[] employees) {
                 Debug.LogError("Received no employee array!");
@@ -13,6 +13,10 @@ namespace Environment.Tasks {
             QuickSort(employees, 0, employees.Length - 1);
             PrintList(employees);
 
+            return employees;
+        }
+
+        public override Employee[] Execute() {
             return null;
         }
 
@@ -53,12 +57,8 @@ namespace Environment.Tasks {
 
 
                 if(employees[j].lastEntranceInEngineRoom <= pivot.lastEntranceInEngineRoom) {
-                    
-                }
-                else if(employees[j].lastEntranceInEngineRoom > pivot.lastEntranceInEngineRoom) {
                     i++;
                     Swap(employees, i, j);
-                   
                 }
             }
             i++;
