@@ -120,4 +120,4 @@ The project is being expanded with additional algorithms, data structures, and t
 
 ---
 
-Developed as part of my game programming and computer science studies.
+Developed as part of my game programming studies at Futuregames Warsaw.
