@@ -1,18 +1,19 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using System.Diagnostics;
+using UnityEngine;
 namespace Environment.Tasks {
     [CreateAssetMenu(menuName = "Tasks/Search Employees")]
-    public class SearchTask : Task {
+    public class SearchTask : Task<Employee[]> {
 
         public override object ExecuteTask(object input) {
             if(input is not Employee[] employees) {
-                Debug.LogError("Received no employee array!");
+                UnityEngine.Debug.LogError("Received no employee array!");
                 return null;
             }
             //Console.Clear();
 
             DateTime firstDate = DateTime.Parse("1970-01-01T00:00:00");
-            DateTime secondDate = DateTime.Parse("2234-08-07T15:37:17");
+            DateTime secondDate = DateTime.Parse("1970-01-01T00:00:00");
 
             int startArrayLength = employees.Length;
             int startIndex = 0;
@@ -20,22 +21,33 @@ namespace Environment.Tasks {
             //DateTime firstInterval = DateTime.Parse(BinarySearch(firstDate, employees, startIndex, endIndex));
             //DateTime secondInterval = DateTime.Parse(BinarySearch(secondDate, employees, startIndex, endIndex));
 
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
             int entryIndex = LowerBound(firstDate, employees);
-            int exitIndex = UpperBound(secondDate, employees) - 1;
+            int exitIndex = UpperBound(secondDate, employees) ;
+
+            stopwatch.Stop();
+
+            UnityEngine.Debug.Log($"Binary Search Time: {stopwatch.ElapsedTicks} ticks");
+            UnityEngine.Debug.Log($"Matching employees: {exitIndex - entryIndex}");
 
             if(entryIndex == -1 || exitIndex == -1) {
-                Debug.LogError("One or both dates were not found!");
+                UnityEngine.Debug.LogError("One or both dates were not found!");
                 return null;
             }
 
             if(entryIndex > exitIndex) {
-                Debug.LogError("The starting date is after the ending date!");
+                UnityEngine.Debug.LogError("The starting date is after the ending date!");
                 return null;
             }
 
 
             PrintList(employees,entryIndex,exitIndex);
 
+            return employees;
+        }
+
+        public override Employee[] Execute() {
             return null;
         }
 
@@ -43,8 +55,8 @@ namespace Environment.Tasks {
 
             while(entryIndex <= exitIndex) {
 
-                Debug.Log(employees[entryIndex].name);
-                Debug.Log(employees[entryIndex].lastEntranceInEngineRoom);
+                UnityEngine.Debug.Log(employees[entryIndex].name);
+                UnityEngine.Debug.Log(employees[entryIndex].lastEntranceInEngineRoom);
                 entryIndex++;
             }
 
@@ -60,6 +72,28 @@ namespace Environment.Tasks {
 
         //}
 
+        //public int BinarySearch(string dateToFind, Employee[] employees, int startIndex, int endIndex) {
+
+        //    if(startIndex > endIndex) {
+        //        return -1;
+        //    }
+
+        //    DateTime targetDate = DateTime.Parse(dateToFind);
+
+        //    int middleIndex = (startIndex + endIndex) / 2;
+
+        //    DateTime middleDate = employees[middleIndex].lastEntranceInEngineRoom;
+
+        //    if(middleDate == targetDate) {
+        //        return middleIndex;
+        //    }
+        //    else if(targetDate < middleDate) {
+        //        return BinarySearch(dateToFind, employees, startIndex, middleIndex - 1);
+        //    }
+        //    else {
+        //        return BinarySearch(dateToFind, employees, middleIndex + 1, endIndex);
+        //    }
+        //}
 
         public int LowerBound(DateTime targetDate, Employee[] employees) {
 
