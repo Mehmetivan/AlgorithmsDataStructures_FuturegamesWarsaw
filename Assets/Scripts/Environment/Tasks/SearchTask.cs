@@ -12,8 +12,8 @@ namespace Environment.Tasks {
             }
             //Console.Clear();
 
-            DateTime firstDate = DateTime.Parse("1970-01-01T00:00:00");
-            DateTime secondDate = DateTime.Parse("1970-01-01T00:00:00");
+            DateTime firstDate = new DateTime(2234, 8, 9, 22, 0, 0);
+            DateTime secondDate = new DateTime(2234, 8, 9, 23, 0, 0);
 
             int startArrayLength = employees.Length;
             int startIndex = 0;
